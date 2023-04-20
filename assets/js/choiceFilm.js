@@ -1,8 +1,11 @@
 import {keyApi} from '../../accesController.js';
-import { listFilm } from "../../accesController.js";  
+import { listFilm } from "../../accesController.js";
+import { setFilmDate } from './toolDate.js';
+
 
 // Clef d'api
 const API_KEY = keyApi();
+// const DATE_FILM = setFilmDate(filmsDAffiche, titre);
 
 const fetchFilm = async (titre) => {
     try {
@@ -34,8 +37,8 @@ const createFilmCard = (film) => {
 }
 
 const createFilmInfoCard = (film) => {
+    const filmDate = getFilmDate(film.Title);
     return `
-
         <div class="col-md-6 d-md-flex justify-content-md-center">
             <div class="card">
                 <img src="${film.Poster}" class="card-img-top" alt="${film.Title}">                    
@@ -54,10 +57,16 @@ const createFilmInfoCard = (film) => {
                 <p class="card-text">IMDb Note: ${film.imdbRating}</p>
                 <p class="card-text">Votes: ${film.imdbVotes}</p>
                 <p class="card-text">Type: ${film.Type}</p>
+                <p class="card-text"><strong>Prochaine séance: ${filmDate}</strong></p>
             </div>
         </div>
     `;
 }
+
+const getFilmDate = (titre) => {
+    const filmsDAffiche = listFilm();
+    return setFilmDate(filmsDAffiche, titre);
+};
 
 const displayFilmInfo = async (title) => {
     const film = await fetchFilm(title);

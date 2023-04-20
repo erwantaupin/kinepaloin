@@ -1,5 +1,6 @@
 import {keyApi} from '../../accesController.js';
-import { listFilm } from "../../accesController.js";  
+import { listFilm } from "../../accesController.js"; 
+import { setFilmDate } from './toolDate.js';
 // require('dotenv').config();
 //clef d'api
 // const API_KEY = process.env.KEY_API;
@@ -26,6 +27,7 @@ const fetchFilm = async (titre) => {
 
 //return la liste des films
 const createFilmCard = (film) => {
+  const filmDate = getFilmDate(film.Title);
     return `
         <a href="film.html?id=${film.Title}" class="d-md-flex justify-content-md-center">
             <div class="col-md-6">
@@ -35,6 +37,7 @@ const createFilmCard = (film) => {
                         <h5 class="card-title">${film.Title}</h5>
                         <p class="card-text">Année: ${film.Year}</p>
                         <p class="card-text">IMDb Note: ${film.imdbRating}</p>
+                        <p class="card-text"><strong>Prochaine séance: ${filmDate}</strong></p>
                     </div>
                 </div>
             </div>
@@ -55,6 +58,10 @@ const getFilmDuJour = () => {
     }
   };
   
+  const getFilmDate = (titre) => {
+    const filmsDAffiche = listFilm();
+    return setFilmDate(filmsDAffiche, titre);
+};
 document.addEventListener('DOMContentLoaded', async () => {
     // Récupérer le contenu du fichier inclus
     const response = await fetch('assets/include/navbar.html');
