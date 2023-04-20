@@ -1,10 +1,15 @@
 import {keyApi} from '../../accesController.js';
-
+import { listFilm } from "../../accesController.js";  
+// require('dotenv').config();
 //clef d'api
+// const API_KEY = process.env.KEY_API;
 const API_KEY = keyApi();
 
 //film à l'affiche
-const filmsDAffiche = ['Interstellar', 'Inception', 'The Matrix', 'The Godfather', 'Pulp Fiction'];
+// const filmsDotEnv = process.env.LIST_FILM;
+// const filmsDAffiche = filmsDotEnv.split(',');
+const filmsDAffiche = listFilm();
+
 
 //recheche dans l'api la liste des films
 const fetchFilm = async (titre) => {

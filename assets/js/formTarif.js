@@ -1,3 +1,5 @@
+import { listFilm } from "../../accesController.js";  
+
 const prixAdult = 10;
 const prixChild = 6;
 const prixSenior = 7;
@@ -26,7 +28,7 @@ let app = new Vue({
         horaires: ['matin', 'après-midi', 'soir'],
         selectedHoraire: "",
         ErrorHoraire: false,
-        filmsDAffiche: ['Interstellar', 'Inception', 'The Matrix', 'The Godfather', 'Pulp Fiction'],
+        filmsDAffiche: listFilm(),
         selectedFilm: "",
         ErrorFilm: false,
         nameValue: "",
@@ -43,19 +45,18 @@ let app = new Vue({
     },
     methods: {
         setFilmDate() {
-            const filmDayMapping = {
-                'Interstellar': 0,
-                'Inception': 1,
-                'The Matrix': 2,
-                'The Godfather': 3,
-                'Pulp Fiction': 4,
-            };
-        
-            const filmDay = filmDayMapping[this.selectedFilm];
+            const filmIndex = this.filmsDAffiche.indexOf(this.selectedFilm);
             const today = new Date();
-            const daysDifference = (filmDay - today.getDay() + 5) % 5;
+            const firstProjectionDay = 1; // Lundi
+        
+            // Calcul du nombre de jours entre aujourd'hui et le prochain jour de projection (lundi)
+            const daysToNextProjection = (firstProjectionDay - today.getDay() + 7) % 7;
+        
+            // Calcul du nombre total de jours à ajouter pour obtenir la date du film sélectionné
+            const daysDifference = daysToNextProjection + filmIndex;
+        
             const filmDate = new Date(today.setDate(today.getDate() + daysDifference));
-            
+        
             // Format de date en français
             this.filmDate = filmDate.toLocaleDateString('fr-FR', {
                 weekday: 'long',
@@ -65,6 +66,7 @@ let app = new Vue({
             });
         },
         
+
         calc(){
             if(this.selectedHoraire === "matin"){
                 this.priceForadult = this.nbrAdult * priceMorning;
@@ -126,7 +128,7 @@ let app = new Vue({
             }else {
                 this.ErrorNameValue = false;
             }
-            // Vérifiez si un nom est renseignée
+            // Vérifiez si un prenom est renseignée
             if (!this.surname.trim()) {
                 this.ErrorSurname = true;
                 ErrorsUP = true;

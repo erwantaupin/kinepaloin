@@ -1,4 +1,5 @@
 import {keyApi} from '../../accesController.js';
+import { listFilm } from "../../accesController.js";  
 
 // Clef d'api
 const API_KEY = keyApi();
@@ -87,7 +88,7 @@ const getFilmToDisplay = () => {
 }
 
 (async () => {
-    const filmsDAffiche = ['Interstellar', 'Inception', 'The Matrix', 'The Godfather', 'Pulp Fiction'];
+    const filmsDAffiche = listFilm();
     const filmsCardsContainer = document.getElementById('film-list2');
 
     for (const titre of filmsDAffiche) {
