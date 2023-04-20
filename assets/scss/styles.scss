@@ -1,0 +1,110 @@
+$tablette-breakpoint: 820px;
+$desktop-breakpoint: 992px;
+
+$color-white: #F1F5F6;
+$color-blue: #064460;
+
+@font-face {
+  font-family: 'Title';
+  src: url('../font/oathkeeper/Oathkeeper.ttf');
+  font-weight: bold;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+
+* {
+    box-sizing: border-box; /* inclut la marge et le padding dans la largeur/hauteur */;
+    margin: 0;
+    padding: 0;
+    
+  }
+  
+body {
+    margin: 0; /* supprime la marge par défaut du navigateur */
+    font-family: sans-serif; /* définit la police par défaut pour le texte */
+    font-size: 16px; /* définit la taille par défaut pour le texte */
+    line-height: 1.5; /* définit la hauteur de ligne par défaut pour le texte */
+    color: #333; /* définit la couleur de texte par défaut */
+    background-color: $color-white; /* définit la couleur de fond par défaut */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Title';
+    font-weight:bold;
+}
+
+p, li{
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.card-body > .row > ul > li{
+  list-style-type: none;
+}
+
+.justify-text {
+  text-align: center;
+}
+.img-bg{
+  background-image: url(../img/kinepolis_logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 40vh;
+}
+
+
+
+main a{
+  color: #333;
+  text-decoration: none;
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: $color-blue;
+  color: $color-white;
+  padding: 20px 0;
+}
+
+footer a{
+  color: rgb(176, 175, 169);
+  text-decoration: none;
+}
+.btn-sky{
+  background-color: rgb(127, 225, 255);
+}
+.color-card{
+  background-color: $color-blue;
+}
+.color-text{
+  background-color: $color-white;
+  border-bottom: 1px solid $color-blue;
+}
+.color-text a{
+  color: $color-blue;
+}
+
+.titre-tarif{
+  background-color: $color-blue;
+  color: $color-white;
+}
+
+@media (min-width: $tablette-breakpoint) {
+  .minifield{
+    height: 700px;
+    overflow-y: scroll;
+  }
+}
+
+@media(min-width: $desktop-breakpoint){
+  .img-bg{
+    background-image: url(../img/kinepolis_2.avif);
+  }
+  .justify-text {
+    text-align: justify;
+  }
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="shortcut icon" href="assets/img/favicon.ico">
+        <title>newLetter</title>
+    </head>
+<body>
+    <div class="container-fluid">
+        <header>
+          <div class="row">
+            <div class="col-md-12">
+                <div id="include-navbar"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 img-bg"></div>
+          </div>
+        </header>
+        <main>
+          <div class="row ">
+            <div class="col-md-6 my-3">
+              <div class="card">
+                <div class="card-header titre-tarif">
+                  <h4 class="card-title">NewLetters</h4>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <p>
+                        Pour vous inscrire à notre newsletter, 
+                        il vous suffit de remplir un formulaire d'inscription en ligne en fournissant votre nom et 
+                        votre adresse e-mail. Une fois le formulaire soumis, 
+                        vous recevrez un e-mail de confirmation contenant un lien de validation 
+                        pour confirmer votre inscription.
+                        <hr>
+                        Après avoir confirmé votre inscription, 
+                        vous commencerez à recevoir notre newsletter à la fréquence indiquée par notre site web. 
+                        Si vous souhaitez vous désinscrire à tout moment, il vous suffit de cliquer sur le lien 
+                        de désinscription inclus dans chaque e-mail que vous recevrez.
+                        <hr>
+                        Nous respectons votre vie 
+                        privée et nous nous engageons à ne jamais partager vos informations personnelles avec des tiers.
+                        Inscrivez-vous dès maintenant pour ne manquer aucune de nos actualités, offres exclusives et 
+                        événements à venir !
+                        </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 my-3">
+                <div class="card">
+                  <div class="card-header titre-tarif">
+                    <h4 class="card-title">Inscription</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                        <form id="formulaire-newsletter" action="newLetter.js" method="post">
+                          <div class="mb-1">
+                            <label for="civilite" class="form-label">Civilité :</label>
+                            <select id="civilite" name="civilite" class="form-select" required>
+                                <option value="">Sélectionnez</option>
+                                <option value="M">Monsieur</option>
+                                <option value="Mme">Madame</option>
+                            </select>
+                        </div>
+                        <div class="mb-1">
+                            <label for="nom" class="form-label">Nom :</label>
+                            <input type="text" id="nom" name="nom" class="form-control" maxlength="40" required>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerte-nom" style="display:none;">
+                              Le champ nom est invalide.
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </div>
+                        <div class="mb-1">
+                            <label for="prenom" class="form-label">Prénom :</label>
+                            <input type="text" id="prenom" name="prenom" class="form-control" minlength="2" maxlength="40" required>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerte-prenom" style="display:none;">
+                              Le champ prenom est invalide.
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </div>
+                        <div class="mb-1">
+                            <label for="adresse" class="form-label">Adresse :</label>
+                            <input type="text" id="adresse" name="adresse" class="form-control" required>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerte-adresse" style="display:none;">
+                              Le champ adresse est invalide.
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </div>
+                        <div class="mb-1">
+                            <label for="date_naissance" class="form-label">Date de naissance :</label>
+                            <input type="date" id="date_naissance" name="date_naissance" class="form-control" required>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerte-date" style="display:none;">
+                              Le champ date de naissance est invalide.
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </div>
+                        <div class="mb-1">
+                            <label for="email" class="form-label">Adresse mail :</label>
+                            <input type="email" id="email" name="email" class="form-control" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerte-email" style="display:none;">
+                              Le champ email est invalide.
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </div>
+                        <div class="mb-1">
+                            <label for="email_confirm" class="form-label">Confirmez l'adresse mail :</label>
+                            <input type="email" id="email_confirm" name="email_confirm" class="form-control" required>
+                        </div>
+                            <button type="submit" class="btn btn-primary">S'inscrire</button>
+                        </form>                          
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </main>
+        <div id="include-footer"></div>               
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="module" src="assets/js/include.js"></script>
+    <script type="module" src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/newLetter.js"></script>
+</body>
+</html>
