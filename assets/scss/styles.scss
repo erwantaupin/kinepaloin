@@ -93,6 +93,11 @@ footer a{
   color: $color-white;
 }
 
+.color-button{
+  background-color: $color-blue;
+  border-color: $color-blue;
+}
+
 @media (min-width: $tablette-breakpoint) {
   .minifield{
     height: 700px;

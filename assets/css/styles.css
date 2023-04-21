@@ -89,6 +89,11 @@ footer a {
   color: #F1F5F6;
 }
 
+.color-button {
+  background-color: #064460;
+  border-color: #064460;
+}
+
 @media (min-width: 820px) {
   .minifield {
     height: 700px;

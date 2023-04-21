@@ -11,12 +11,11 @@ const emailRegex = /\S+@\S+\.\S+/;
 
 Vue.component('tarif-ticket', {
     props: ['totalPrix'],
-    template: '<h3 class="text-md-end" id="totalPrix">Total :  {{totalPrix}} € '
+    template: '<h3 class="text-end my-3" id="totalPrix">Total :  {{totalPrix}} € '
 })
 /**
  * TODO: l'envoi du formulaire
  */
-// les error doivent etre false pour valider le submit, mais ne doivent pas etre vue avant de modifier les entrers
 
 let app = new Vue({
     el : "#form-tarif",
@@ -42,6 +41,7 @@ let app = new Vue({
         nbrStudent: 0,
         nbrSenior: 0,
         totalPrix : 0,
+        nextClicked: false,
     },
     methods: {
         setFilmDate() {
@@ -98,6 +98,10 @@ let app = new Vue({
             this.ErrorEmailDouble = this.email !== this.emailVerif;
         },
 
+        nextButtonClicked() {
+            this.nextClicked = true;
+        },
+
         click() {
             let ErrorsUP = false;
         
@@ -137,11 +141,20 @@ let app = new Vue({
             }
             // si errorsUp est false alors je peut envoyer le formulaire
             if(!ErrorsUP){
-                console.log("ok");
+                //mettre ici chemin vers le back pour verifier coté backend et envoyer le formulaire
+                $("#exampleModalCenter").modal("show");
             }
         },
     },
 
+    watch: {
+        totalPrix(newValue) {
+            if (newValue === 0) {
+                this.nextClicked = false;
+            }
+        }
+    },
+    
 
     computed: {
         
@@ -150,6 +163,9 @@ let app = new Vue({
         },
         isAnyInputNonZero() {
             return this.totalPrix !== 0;
+        },
+        isNextOk() {
+            return this.totalPrix !== 0 && this.nextClicked;
         },
     },
 

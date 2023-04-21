@@ -1,13 +1,8 @@
-import {users} from './accesController.js';
-import {password} from './accesController.js';
-
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const user = users();
-const password = password();
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -19,8 +14,8 @@ let transporter = nodemailer.createTransport({
   host: "sandbox.smtp.mailtrap.io",
   port: 2525,
   auth: {
-    user: user,
-    pass: password
+    user: '11357cdda76581',
+    pass: '2b099a33234041'
   }
 });
 

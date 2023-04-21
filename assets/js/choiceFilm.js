@@ -5,7 +5,6 @@ import { setFilmDate } from './toolDate.js';
 
 // Clef d'api
 const API_KEY = keyApi();
-// const DATE_FILM = setFilmDate(filmsDAffiche, titre);
 
 const fetchFilm = async (titre) => {
     try {
